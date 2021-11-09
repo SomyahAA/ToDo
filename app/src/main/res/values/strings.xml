@@ -4,13 +4,12 @@
     <string name="task_title_hint">Enter title for the Task</string>
     <string name="task_details_label">Details</string>
     <string name="task_done_label">Done</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="newTask">add</string>
     <string name="task_date">task date</string>
     <string name="add_task">add task</string>
     <string name="save_task">save task</string>
-    <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="empty_not_saved">task not saved because it is empty.</string>
     <string name="todo">TODO</string>
     <string name="all_tasks">All Tasks</string>
     <string name="delete_task">Delete task</string>

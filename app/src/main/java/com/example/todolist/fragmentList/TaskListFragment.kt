@@ -8,12 +8,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
 import com.example.todolist.dataBase.Task
 import com.example.todolist.taskFragement.TaskFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 
 const val key_Id = "myTaskId"
@@ -24,6 +26,7 @@ class TaskListFragment : Fragment() {
     private lateinit var taskRecyclerView: RecyclerView
     private val taskListViewModel by lazy { ViewModelProvider(this).get(com.example.todolist.fragmentList.TaskListViewModel::class.java) }
     private lateinit var fab: FloatingActionButton
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,12 +43,35 @@ class TaskListFragment : Fragment() {
         return view
     }
 
+    var tasks = listOf<Task>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         taskListViewModel.taskIdLiveData.observe(
             viewLifecycleOwner, Observer {
                 updateUI(it)
+                tasks =it
             })
+
+            val swipeToDeleteObj = object : ItemTouchHelper.SimpleCallback(
+            0,ItemTouchHelper.LEFT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                val task=tasks[viewHolder.adapterPosition]
+                taskListViewModel.deleteTask(task)
+
+            }
+        }
+       val swipeToDelete =ItemTouchHelper(swipeToDeleteObj)
+        swipeToDelete.attachToRecyclerView(taskRecyclerView)
 
     }
 
@@ -88,7 +114,6 @@ class TaskListFragment : Fragment() {
                     args.putSerializable(key_Id, task.id)
                     val fragment = TaskFragment()
                     fragment.arguments = args
-
                     activity?.let {
                         it.supportFragmentManager
                             .beginTransaction()
@@ -121,6 +146,8 @@ class TaskListFragment : Fragment() {
 
         override fun getItemCount(): Int = tasks.size
 
+
+
     }
 
     override fun onStart() {
@@ -145,5 +172,7 @@ class TaskListFragment : Fragment() {
         }
     }
 
+
 }
+
 

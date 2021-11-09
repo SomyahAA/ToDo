@@ -26,7 +26,7 @@ class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
     private lateinit var task: Task
     private lateinit var titleEditText: EditText
     private lateinit var dateBtn: Button
-
+    private lateinit var button_save:Button
 
     private val fragmentViewModel by lazy { ViewModelProvider(this).get(TaskFragmentViewModel::class.java) }
 
@@ -40,12 +40,13 @@ class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
         val view = inflater.inflate(R.layout.task_fragment, container, false)
         titleEditText = view.findViewById(R.id.taskTitle)
         dateBtn = view.findViewById(R.id.task_date)
+        button_save =view.findViewById(R.id.button_save)
 
 
-//        dateBtn.apply {
-//            text = task.date.toString()
-//
-//        }
+        dateBtn.apply {
+            text = task.date.toString()
+
+        }
         return view
     }
 
@@ -61,6 +62,9 @@ class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
             }
 
             datePicker.arguments = args
+        }
+        button_save.setOnClickListener{
+
         }
 
 
@@ -110,10 +114,9 @@ class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
                     task = it
                     titleEditText.setText(it.title)
                     dateBtn.text = it.date.toString()
-
-
                 }
-            })
+            }
+        )
     }
 
     override fun onDateSelected(date: Date) {
