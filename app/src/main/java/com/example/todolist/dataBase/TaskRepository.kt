@@ -10,7 +10,6 @@ import java.util.concurrent.Executors
 
 private const val DATABASE_NAME = "task-database"
 
-
 class TaskRepository private constructor(context: Context) {
 
     private val executor = Executors.newSingleThreadExecutor()
@@ -30,22 +29,23 @@ class TaskRepository private constructor(context: Context) {
         return taskDao.getTask(id)
     }
 
-    fun updateTask(task:Task){
+    fun updateTask(task: Task) {
         executor.execute {
             taskDao.updateTask(task)
         }
     }
-    fun addTask(task: Task){
-        executor.execute{
+
+    fun addTask(task: Task) {
+        executor.execute {
             taskDao.addTask(task)
         }
     }
-    fun deleteTask(task: Task){
-        executor.execute{
+
+    fun deleteTask(task: Task) {
+        executor.execute {
             taskDao.deleteTask(task)
         }
     }
-
 
     companion object {
         private var INSTANCE: TaskRepository? =

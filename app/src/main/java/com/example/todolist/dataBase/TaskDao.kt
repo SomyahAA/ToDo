@@ -6,6 +6,7 @@ import java.util.*
 
 @Dao
 interface TaskDao {
+
     @Query("SELECT * FROM Task")
     fun getAllTasks(): LiveData<List<Task>>
 
@@ -13,14 +14,12 @@ interface TaskDao {
     fun getTask(id: UUID): LiveData<Task?>
 
     @Update
-    fun updateTask(task:Task)
+    fun updateTask(task: Task)
 
     @Insert
     fun addTask(task: Task)
 
     @Delete
     fun deleteTask(task: Task)
-
-
 
 }

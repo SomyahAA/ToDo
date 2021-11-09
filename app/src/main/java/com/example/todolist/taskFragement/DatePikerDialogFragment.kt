@@ -6,22 +6,22 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
-class DatePikerDialogFragment :DialogFragment() {
+class DatePikerDialogFragment : DialogFragment() {
 
-    interface DatePickerCallback{
+    interface DatePickerCallback {
         fun onDateSelected(date: Date)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
 
-        val date =arguments?.getSerializable(task_date_key) as Date
-        val calender =Calendar.getInstance()
-        calender.time= date
+        val date = arguments?.getSerializable(task_date_key) as Date
+        val calender = Calendar.getInstance()
+        calender.time = date
 
         val year = calender.get(Calendar.YEAR)
-        val month=calender.get(Calendar.MONTH)
-        val day =calender.get(Calendar.DAY_OF_MONTH)
+        val month = calender.get(Calendar.MONTH)
+        val day = calender.get(Calendar.DAY_OF_MONTH)
 
         val dateListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             val resultData = GregorianCalendar(year, month, dayOfMonth).time

@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -20,16 +19,17 @@ import com.example.todolist.fragmentList.key_Id
 import java.util.*
 
 
-const val task_date_key ="taskDate"
-class TaskFragment : Fragment() , DatePikerDialogFragment.DatePickerCallback{
+const val task_date_key = "taskDate"
+
+class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
 
     private lateinit var task: Task
     private lateinit var titleEditText: EditText
     private lateinit var dateBtn: Button
-    private lateinit var isDoneCheckBox: CheckBox
 
 
     private val fragmentViewModel by lazy { ViewModelProvider(this).get(TaskFragmentViewModel::class.java) }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,13 +40,12 @@ class TaskFragment : Fragment() , DatePikerDialogFragment.DatePickerCallback{
         val view = inflater.inflate(R.layout.task_fragment, container, false)
         titleEditText = view.findViewById(R.id.taskTitle)
         dateBtn = view.findViewById(R.id.task_date)
-        //isDoneCheckBox = view.findViewById(R.id.task_solved_label)
 
-        dateBtn.apply {
-            text = task.date.toString()
 
-        }
-
+//        dateBtn.apply {
+//            text = task.date.toString()
+//
+//        }
         return view
     }
 
@@ -55,16 +54,13 @@ class TaskFragment : Fragment() , DatePikerDialogFragment.DatePickerCallback{
         dateBtn.setOnClickListener {
 
             val args = Bundle()
-            args.putSerializable(task_date_key,task.date)
+            args.putSerializable(task_date_key, task.date)
             val datePicker = DatePikerDialogFragment().also {
-                it.setTargetFragment(this,0)
+                it.setTargetFragment(this, 0)
                 it.show(this.parentFragmentManager, "date Picker")
             }
 
             datePicker.arguments = args
-
-
-
         }
 
 
@@ -90,14 +86,9 @@ class TaskFragment : Fragment() , DatePikerDialogFragment.DatePickerCallback{
             }
 
             override fun afterTextChanged(sequence: Editable?) {
-                // This one too
             }
         }
         titleEditText.addTextChangedListener(textWatcher)
-        isDoneCheckBox.setOnCheckedChangeListener { _, isChecked ->
-            task.isDone = isChecked
-        }
-
     }
 
 
@@ -119,7 +110,7 @@ class TaskFragment : Fragment() , DatePikerDialogFragment.DatePickerCallback{
                     task = it
                     titleEditText.setText(it.title)
                     dateBtn.text = it.date.toString()
-                    isDoneCheckBox.isChecked = it.isDone
+
 
                 }
             })
@@ -127,8 +118,9 @@ class TaskFragment : Fragment() , DatePikerDialogFragment.DatePickerCallback{
 
     override fun onDateSelected(date: Date) {
         task.date = date
-        dateBtn.text= date.toString()
+        dateBtn.text = date.toString()
     }
+
     override fun onStop() {
         super.onStop()
         fragmentViewModel.saveUpdate(task)

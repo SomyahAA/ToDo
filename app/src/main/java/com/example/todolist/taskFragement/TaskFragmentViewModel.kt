@@ -1,5 +1,3 @@
-
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -12,18 +10,21 @@ import java.util.*
 class TaskFragmentViewModel : ViewModel() {
 
     private val taskRepository = TaskRepository.get()
-    private val taskIdLiveData = MutableLiveData <UUID>()
+    private val taskIdLiveData = MutableLiveData<UUID>()
 
 
-    var taskLiveData : LiveData<Task?> =
-        Transformations.switchMap(taskIdLiveData){
+    var taskLiveData: LiveData<Task?> =
+        Transformations.switchMap(taskIdLiveData) {
             taskRepository.getTask(it)
         }
 
-    fun loadTask(taskId :UUID){
-        taskIdLiveData.value =taskId
+    fun loadTask(taskId: UUID) {
+        taskIdLiveData.value = taskId
     }
-    fun saveUpdate(task:Task){
+
+    fun saveUpdate(task: Task) {
         taskRepository.updateTask(task)
     }
+
+
 }
