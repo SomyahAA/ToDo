@@ -2,7 +2,6 @@ package com.example.todolist.fragmentList
 
 import android.os.Bundle
 import android.view.*
-import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -14,11 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
 import com.example.todolist.dataBase.Task
 import com.example.todolist.taskFragement.TaskFragment
+import com.example.todolist.taskFragement.dateFormat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-
 const val key_Id = "myTaskId"
+
 
 class TaskListFragment : Fragment() {
 
@@ -88,19 +88,30 @@ class TaskListFragment : Fragment() {
 
         val titleTextView: TextView = itemView.findViewById(R.id.taskTitle)
         val dateTextView: TextView = itemView.findViewById(R.id.taskDateItem)
+        val duedateTextView:TextView=itemView.findViewById(R.id.duedate)
 
 
-        private val isDoneCheckBox: CheckBox = itemView.findViewById(R.id.isDoneCheckBox)
+       // private val isDoneCheckBox: CheckBox = itemView.findViewById(R.id.chkSenThemeListThemeCheck)
 
         init {
             itemView.setOnClickListener(this)
         }
 
+
         fun bind(task: Task) {
+
             this.task = task
             titleTextView.text = task.title
-            dateTextView.text = task.date.toString()
-            isDoneCheckBox.visibility = if (task.isDone) {
+            dateTextView.text = task.date?.toString()
+
+
+            if(task.date !=null ){
+                if (task.currentDate.after(task.date)){
+                    duedateTextView.text = "over date"
+                }
+            }
+
+            dateTextView.visibility = if (task.date != null) {
                 View.VISIBLE
             } else {
                 View.GONE
@@ -122,10 +133,10 @@ class TaskListFragment : Fragment() {
                             .commit()
                     }
                 }
-                dateTextView -> {
-                    Toast.makeText(context, "the date is ${task.date}", Toast.LENGTH_LONG)
-                        .show()
-                }
+//                dateTextView -> {
+//                    Toast.makeText(context, "the date is ${task.date}", Toast.LENGTH_LONG)
+//                        .show()
+//                }
 
 
             }
@@ -143,11 +154,7 @@ class TaskListFragment : Fragment() {
             val task = tasks[position]
             holder.bind(task)
         }
-
         override fun getItemCount(): Int = tasks.size
-
-
-
     }
 
     override fun onStart() {

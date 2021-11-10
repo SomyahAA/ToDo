@@ -14,30 +14,33 @@
         android:layout_width="325dp"
         android:layout_height="72dp"
         android:layout_margin="10sp"
-        android:layout_marginHorizontal="10sp"
-        android:layout_marginVertical="20sp"
-        android:backgroundTint="#7782C8"
         android:foregroundGravity="center"
         android:overScrollMode="ifContentScrolls"
         app:cardCornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="8dp"
+        android:background="#E8E8E8"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:textAppearance="?attr/textAppearanceHeadline5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="MissingConstraints"
+            android:layout_height="wrap_content"
+            tools:ignore="ExtraText,MissingConstraints"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
             <TextView
                 android:id="@+id/taskTitle"
-                android:layout_width="321dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="242dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
                 android:autoSizeMinTextSize="20sp"
                 android:gravity="center"
                 android:text="@string/task_title"
@@ -47,9 +50,9 @@
 
             <TextView
                 android:id="@+id/taskDateItem"
-                android:layout_width="251dp"
-                android:layout_height="17dp"
-                android:layout_marginStart="16dp"
+                android:layout_width="241dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:gravity="center_horizontal"
                 android:text="@string/task_date"
@@ -59,18 +62,26 @@
 
             <CheckBox
                 android:id="@+id/isDoneCheckBox"
-                android:layout_width="32dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="4dp"
-                android:contentDescription="@string/task_done_label"
-                android:visibility="visible"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/checkbox_custom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/taskDateItem"
-                app:layout_constraintTop_toBottomOf="@+id/taskTitle"
-                app:layout_constraintVertical_bias="0.0"
-                tools:ignore="TouchTargetSizeCheck" />
+                app:layout_constraintHorizontal_bias="0.483"
+                app:layout_constraintStart_toEndOf="@+id/taskTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.666" />
+
+            <TextView
+                android:id="@+id/duedate"
+                android:layout_width="76dp"
+                android:layout_height="13dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.172"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/taskDateItem" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

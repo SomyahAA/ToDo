@@ -1,35 +1,99 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/taskTitle"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
+        android:text="@string/to_do"
+        android:layout_marginStart="20dp">
+    </TextView>
+
+    <EditText
+        android:id="@+id/taskTitle"
+        android:layout_width="381dp"
+        android:layout_height="wrap_content"
         android:autofillHints="edit task"
         android:fontFamily="sans-serif-light"
         android:hint="@string/add_task"
         android:inputType="textAutoComplete"
         android:minHeight="48dp"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:id="@+id/taskDetailsLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="@string/task_details" />
+
+    <EditText
+        android:id="@+id/taskDetailsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/detailsHint"
+        android:inputType="textPersonName"
+        android:minHeight="48dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="@string/project"
+        android:layout_marginStart="20dp">
+
+    </TextView>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck">
+
+    </Spinner>
+
+    <TextView
+        android:layout_marginStart="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="@string/deadline">
+    </TextView>
+
+    <Button
+        android:id="@+id/task_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:background="#757575"
+        android:gravity="center"
+        android:text="@string/add_the_date"
+        android:textColor="@color/white"
+        app:cornerRadius="20dp"
+        tools:text="Add the date" />
 
     <Button
         android:id="@+id/button_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:text="@string/save_task"
         android:layout_margin="20dp"
-        android:textColor="@color/black" />
+        android:layout_marginStart="20dp"
+        android:background="#757575"
+        android:text="@string/done"
+        android:textColor="@color/white"
+        app:cornerRadius="20sp" />
 
-    <Button
-        android:id="@+id/task_date"
-        android:layout_width="match_parent"
-        android:layout_height="68dp"
-        tools:text="Add the date" />
 
 </LinearLayout>

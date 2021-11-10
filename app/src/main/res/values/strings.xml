@@ -13,5 +13,18 @@
     <string name="todo">TODO</string>
     <string name="all_tasks">All Tasks</string>
     <string name="delete_task">Delete task</string>
+    <string name="to_do">To-do</string>
+    <string name="done">Done</string>
+    <string name="project">project</string>
+    <string name="deadline">Deadline</string>
+    <string name="add_the_date">Add the date</string>
+    <string name="task_details">Task Details</string>
+    <string name="detailsHint">Add your task your details</string>
+    <string-array name="project_array">
+        <item>Work</item>
+        <item>Home</item>
+        <item>SelfCare</item>
+        <item>Weekend</item>
+    </string-array>
 
 </resources>

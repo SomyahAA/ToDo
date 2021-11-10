@@ -2,6 +2,7 @@ package com.example.todolist.taskFragement
 
 
 import TaskFragmentViewModel
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,8 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.todolist.R
@@ -20,13 +20,15 @@ import java.util.*
 
 
 const val task_date_key = "taskDate"
+const val dateFormat ="dd/MMM/yyyy"
 
 class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
 
     private lateinit var task: Task
     private lateinit var titleEditText: EditText
     private lateinit var dateBtn: Button
-    private lateinit var button_save:Button
+    private lateinit var button_save: Button
+    private lateinit var taskDetailsEditText:EditText
 
     private val fragmentViewModel by lazy { ViewModelProvider(this).get(TaskFragmentViewModel::class.java) }
 
@@ -37,15 +39,24 @@ class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
     ): View? {
 
 
+
         val view = inflater.inflate(R.layout.task_fragment, container, false)
         titleEditText = view.findViewById(R.id.taskTitle)
         dateBtn = view.findViewById(R.id.task_date)
-        button_save =view.findViewById(R.id.button_save)
+        button_save = view.findViewById(R.id.button_save)
+        taskDetailsEditText=view.findViewById(R.id.taskDetailsEditText)
 
-
-        dateBtn.apply {
-            text = task.date.toString()
-
+        dateBtn.text="add Date"
+        val spinner: Spinner = view.findViewById(R.id.spinner)
+        context?.let {
+            ArrayAdapter.createFromResource(
+                it,
+                R.array.project_array,
+                android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinner.adapter = adapter
+            }
         }
         return view
     }
@@ -53,20 +64,18 @@ class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
     override fun onStart() {
         super.onStart()
         dateBtn.setOnClickListener {
-
             val args = Bundle()
             args.putSerializable(task_date_key, task.date)
+
             val datePicker = DatePikerDialogFragment().also {
                 it.setTargetFragment(this, 0)
                 it.show(this.parentFragmentManager, "date Picker")
             }
-
             datePicker.arguments = args
         }
-        button_save.setOnClickListener{
+        button_save.setOnClickListener {
 
         }
-
 
         val textWatcher = object :
             TextWatcher {
@@ -95,7 +104,10 @@ class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
         titleEditText.addTextChangedListener(textWatcher)
     }
 
-
+    //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         task = Task()
@@ -105,6 +117,13 @@ class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
     }
 
 
+    /*
+     if (task.title != null){
+            task = Task()
+        }
+        else{
+            Toast.makeText(context, "task not created",Toast.LENGTH_SHORT).show()
+        }*/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fragmentViewModel.taskLiveData.observe(
@@ -113,7 +132,8 @@ class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
                 it?.let {
                     task = it
                     titleEditText.setText(it.title)
-                    dateBtn.text = it.date.toString()
+                    dateBtn.text = it.date?.toString()
+                    taskDetailsEditText.setText(it.details)
                 }
             }
         )
@@ -121,12 +141,18 @@ class TaskFragment : Fragment(), DatePikerDialogFragment.DatePickerCallback {
 
     override fun onDateSelected(date: Date) {
         task.date = date
-        dateBtn.text = date.toString()
+        dateBtn.text =android.text.format.DateFormat.format(dateFormat,task.date)
     }
 
     override fun onStop() {
         super.onStop()
-        fragmentViewModel.saveUpdate(task)
+        if (task.title.isEmpty()) {
+            fragmentViewModel.deleteTask(task)
+            Toast.makeText(context, "task should have a name", Toast.LENGTH_LONG).show()
+
+        }else{
+            fragmentViewModel.saveUpdate(task)
+        }
     }
 
 }

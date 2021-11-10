@@ -24,3 +24,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+//            dateTextView.text = android.text.format.DateFormat.format(dateFormat,task.date)
