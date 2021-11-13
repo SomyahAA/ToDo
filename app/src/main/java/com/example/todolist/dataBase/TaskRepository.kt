@@ -6,7 +6,6 @@ import androidx.room.Room
 import java.lang.IllegalStateException
 import java.util.*
 import java.util.concurrent.Executors
-import androidx.room.migration.Migration
 
 
 private const val DATABASE_NAME = "task-database2"

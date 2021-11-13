@@ -11,20 +11,42 @@
     <string name="save_task">save task</string>
     <string name="empty_not_saved">task not saved because it is empty.</string>
     <string name="todo">TODO</string>
-    <string name="all_tasks">All Tasks</string>
+    <string name="all_tasks"> Got some /n bright ideas today ?</string>
     <string name="delete_task">Delete task</string>
     <string name="to_do">To-do</string>
-    <string name="done">Done</string>
-    <string name="project">project</string>
+    <string name="priority">Task Priority</string>
     <string name="deadline">Deadline</string>
     <string name="add_the_date">Add the date</string>
     <string name="task_details">Task Details</string>
-    <string name="detailsHint">Add your task your details</string>
+    <string name="deadlineLabel">click to add deadline</string>
+    <string name="detailsHint">Add your task details</string>
+    <string name="array_project">TextView</string>
     <string-array name="project_array">
-        <item>Work</item>
-        <item>Home</item>
-        <item>SelfCare</item>
-        <item>Weekend</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>low</item>
     </string-array>
+    <string-array name="order_array">
+        <item>by priority</item>
+        <item>Alphabetically</item>
+        <item>date created</item>
+    </string-array>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="done">Done</string>
+    <string name="welcome">Welcome !!</string>
+    <string name="got_some_bright_n_ideas_today">Got some bright \n ideas today ?</string>
+    <string name="textview">TextView</string>
+    <string name="hello_there_welcome_to">Hello There! Welcome to</string>
+    <string name="to_doo">TO DO</string>
 
 </resources>

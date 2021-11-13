@@ -12,6 +12,7 @@ class DatePikerDialogFragment : DialogFragment() {
         fun onDateSelected(date: Date)
     }
 
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
 
@@ -19,7 +20,7 @@ class DatePikerDialogFragment : DialogFragment() {
         val calender = Calendar.getInstance()
 
         if (date != null) {
-          calender.time = date
+            calender.time = date
         }
 
         val year = calender.get(Calendar.YEAR)
@@ -40,5 +41,7 @@ class DatePikerDialogFragment : DialogFragment() {
             month,
             day
         )
+
     }
+
 }

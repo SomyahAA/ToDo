@@ -23,4 +23,10 @@
         <item name="cornerSizeBottomRight">8dp</item>
         <item name="cornerSizeBottomLeft">8dp</item>
     </style>
+    <style name="Theme.ToDoList.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.ToDoList.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.ToDoList.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

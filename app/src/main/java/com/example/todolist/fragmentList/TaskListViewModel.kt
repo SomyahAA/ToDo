@@ -10,7 +10,6 @@ class TaskListViewModel : ViewModel() {
     private val taskRepository = TaskRepository.get()
     val taskIdLiveData = taskRepository.getAllTasks()
 
-
     fun addTask(task: Task) {
         taskRepository.addTask(task)
     }
@@ -18,5 +17,4 @@ class TaskListViewModel : ViewModel() {
     fun deleteTask(task: Task) {
         taskRepository.deleteTask(task)
     }
-
 }

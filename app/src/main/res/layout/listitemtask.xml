@@ -6,81 +6,97 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:visibility="visible">
+    android:visibility="visible"
+    android:background="#F5F5F5">
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="325dp"
-        android:layout_height="72dp"
+        android:layout_width="364dp"
+        android:layout_height="100dp"
         android:layout_margin="10sp"
-        android:foregroundGravity="center"
-        android:overScrollMode="ifContentScrolls"
-        app:cardCornerRadius="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginHorizontal="12dp"
         android:layout_marginVertical="8dp"
         android:background="#E8E8E8"
+        android:foregroundGravity="center"
+        android:overScrollMode="ifContentScrolls"
         android:paddingHorizontal="16dp"
         android:paddingVertical="12dp"
-        android:textAppearance="?attr/textAppearanceHeadline5">
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="109dp"
+            app:layout_constraintBottom_toBottomOf="@+id/taskTitle"
+            app:layout_constraintTop_toBottomOf="@+id/taskTitle"
             tools:ignore="ExtraText,MissingConstraints"
             tools:layout_editor_absoluteX="30dp"
             tools:layout_editor_absoluteY="30dp">
 
             <TextView
+                android:id="@+id/prioritytv"
+                android:layout_width="56dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="52dp"
+                app:circularflow_defaultRadius="@dimen/fab_margin"
+                app:layout_constraintEnd_toStartOf="@+id/taskDateItem"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/dueDate"
+                app:layout_constraintTop_toBottomOf="@+id/taskTitle" />
+
+            <TextView
                 android:id="@+id/taskTitle"
-                android:layout_width="242dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="4dp"
+                android:layout_width="237dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="16dp"
-                android:autoSizeMinTextSize="20sp"
-                android:gravity="center"
+                android:layout_marginEnd="32dp"
+                android:gravity="start"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
                 android:text="@string/task_title"
                 android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/isDoneCheckBox"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/taskDateItem"
-                android:layout_width="241dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
+                android:layout_width="89dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="20dp"
                 android:gravity="center_horizontal"
                 android:text="@string/task_date"
                 android:textColor="#3949AB"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/taskTitle" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <CheckBox
                 android:id="@+id/isDoneCheckBox"
-                android:layout_width="48dp"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="49dp"
                 android:layout_height="48dp"
-                android:background="@drawable/checkbox_custom"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.483"
-                app:layout_constraintStart_toEndOf="@+id/taskTitle"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.666" />
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/duedate"
-                android:layout_width="76dp"
-                android:layout_height="13dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.172"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/taskDateItem" />
+                android:id="@+id/dueDate"
+                android:layout_width="62dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

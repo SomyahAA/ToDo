@@ -1,99 +1,139 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/LinearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="37dp"
         android:text="@string/to_do"
-        android:layout_marginStart="20dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
     </TextView>
 
     <EditText
         android:id="@+id/taskTitle"
-        android:layout_width="381dp"
-        android:layout_height="wrap_content"
+        android:layout_width="325dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="58dp"
         android:autofillHints="edit task"
         android:fontFamily="sans-serif-light"
         android:hint="@string/add_task"
         android:inputType="textAutoComplete"
         android:minHeight="48dp"
         android:textSize="18sp"
-        android:layout_marginStart="10dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/taskDetailsLabel"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="@string/task_details" />
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="307dp"
+        android:text="@string/task_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskTitle" />
 
     <EditText
         android:id="@+id/taskDetailsEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="324dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="28dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/detailsHint"
-        android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskDetailsLabel" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="@string/project"
-        android:layout_marginStart="20dp">
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/priority"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_date">
 
     </TextView>
 
+
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
+        android:id="@+id/priority_spinner"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:gravity="center"
         android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/Done"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="SpeakableTextPresentCheck">
 
     </Spinner>
 
     <TextView
-        android:layout_marginStart="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="@string/deadline">
+        android:id="@+id/textView8"
+        android:layout_width="68dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="315dp"
+        android:text="@string/deadline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskDetailsEditText">
     </TextView>
 
     <Button
         android:id="@+id/task_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginStart="20dp"
-        android:background="#757575"
-        android:gravity="center"
+        android:layout_width="323dp"
+        android:layout_height="48dp"
+
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
         android:text="@string/add_the_date"
-        android:textColor="@color/white"
-        app:cornerRadius="20dp"
-        tools:text="Add the date" />
+        android:textColor="#000000"
+        app:cornerRadius="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
     <Button
-        android:id="@+id/button_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginStart="20dp"
-        android:background="#757575"
+        android:id="@+id/Done"
+        android:layout_width="318dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginEnd="60dp"
         android:text="@string/done"
         android:textColor="@color/white"
-        app:cornerRadius="20sp" />
+        android:textSize="20sp"
+        app:cornerRadius="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
