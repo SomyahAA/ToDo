@@ -1,5 +1,7 @@
 A To-Do application written in kotlin using Android Architectural components 
 
+Usage:
+
 * Kotlin - as a programming language.
 * AndroidX - Project uses androidx packages.
 * RecyclerView - to display the To Do list 
@@ -12,26 +14,19 @@ A To-Do application written in kotlin using Android Architectural components
 
 
 Functionalities included:
+
 * Create Todo
 * Delete existing Todo
 * View/Update Todo
 * Add todo Priority 
 * add To Do date 
 
-ScreenShots
 
+ScreenShots:
 
-![Screenshot_20211114_010939](https://user-images.githubusercontent.com/92253618/141661051-9ce6ab70-2a44-49b2-888b-6f72e2245487.png)
-
-![Screenshot_20211114_010908](https://user-images.githubusercontent.com/92253618/141661057-177b1f59-1d01-46ef-82df-2c69a171ce12.png)
-
-![Screenshot_20211114_014006](https://user-images.githubusercontent.com/92253618/141661070-0ddf1c6b-d134-4874-b65a-6f439dfb71a6.png)
-
-<img width="383" alt="Screen Shot 1443-04-09 at 1 37 00 AM" src="https://user-images.githubusercontent.com/92253618/141661076-92c7b32a-decc-4375-a59c-937dd6911a52.png">
-
-![Screenshot_20211114_011117](https://user-images.githubusercontent.com/92253618/141661084-113285c8-6ef7-4614-a500-3dd34af7a654.png)
-
-![Screenshot_20211114_011106](https://user-images.githubusercontent.com/92253618/141661088-eb20e9fe-1f2b-426a-8296-22f571b8bf99.png)
-
-
-
+<img width="414" alt="Screen Shot 1" src="https://user-images.githubusercontent.com/92253618/141661172-fcbc42b2-842d-41a0-b54e-67ed8e667b81.png">
+<img width="414" alt="Screen Shot 2" src="https://user-images.githubusercontent.com/92253618/141661175-cbd9a426-905c-4957-a976-61d21fee143a.png">
+<img width="417" alt="Screen Shot 3" src="https://user-images.githubusercontent.com/92253618/141661176-acd5a0c7-d148-4811-9265-666132f1cb49.png">
+<img width="418" alt="Screen Shot 4" src="https://user-images.githubusercontent.com/92253618/141661178-102d8afc-0e14-4eda-a86d-2d0f92c233f0.png">
+<img width="389" alt="Screen Shot 5" src="https://user-images.githubusercontent.com/92253618/141661181-1c111856-a008-4f01-bb4c-a7720c40e018.png">
+<img width="417" alt="Screen Shot 6" src="https://user-images.githubusercontent.com/92253618/141661182-72a1755d-1879-441d-b042-e1c31768c2ae.png">
